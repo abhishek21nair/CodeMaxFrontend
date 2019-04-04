@@ -33,8 +33,8 @@ app.controller('manufactureController', function($scope, $http, API_URL) {
     //save new record / update existing record
     $scope.save = function(modalstate, id) {
         var url = API_URL + "manufacture";
-        console.log($scope.employee.name);
-        var data = {"name":$scope.employee.name};
+        console.log($scope.manufacture.name);
+        var data = {"name":$scope.manufacture.name};
         console.log(data);
         
         //append employee id to the URL if the form is in edit mode
@@ -46,12 +46,12 @@ app.controller('manufactureController', function($scope, $http, API_URL) {
             method: 'POST',
             url: url,
             //data: $.param($scope.employee),
-            //data:"name:"+$scope.employee.name,
+            //data:"name:"+$scope.manufacture.name,
             data:data,
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function(response) {
             console.log(response);
-            location.reload();
+            //location.reload();
         }).error(function(response) {
             console.log(response);
             alert('This is embarassing. An error has occured. Please check the log for details');
