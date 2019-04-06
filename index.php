@@ -155,11 +155,6 @@
                 </div>
 
 
-
-
-
-
-
                 
                 <div class="form-group text-center">
                     <button type="button" class="btn btn-default" ng-click="saveModel()" ng-disabled="frmModel.$invalid">Save</button>
@@ -174,7 +169,4 @@
     } );
     
 </script>
-<!-- <script src="js/manufacturer.js"></script>
-<script src="js/add_model.js"></script>
-<script src="js/inventory.js"></script>  -->
 </html>

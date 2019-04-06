@@ -15,16 +15,6 @@ var app = angular.module('car', [])
 
         ]);
 
-
-
-
-
-// (function() {
-// angular.module("SS.pages").directive("fileModel", fileModel);
-//  /** @ngInject */
-
-// })();
-
         
 
 function loadManufacturer() {
@@ -43,3 +33,27 @@ function loadManufacturer() {
     });
 }
 
+
+
+function loadInventories() {
+    if ($.fn.DataTable.isDataTable("#inventory-table")) {
+        $('#inventory-table').DataTable().clear().destroy();
+    }
+
+    $('#inventory-table').DataTable( {
+        "ajax": {
+                    "url" : "http://127.0.0.1:8000/api/v1/showmodels",
+                    dataSrc : ''
+                },
+        rowId: 'id',
+        "columns" : [ 
+            {"data" : "id"}, 
+            {"data" : "model_name"}, 
+            {"data" : "manufacturer_name"}, 
+            {"data" : "count"}
+        ],
+        "rowCallback": function( row, data ) {
+        
+        }
+    } );    
+}
