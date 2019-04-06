@@ -10,11 +10,12 @@
     <script src="./jss/jquery.dataTables.min.js"></script>
     <script src="./jss/bootstrap.min.js"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+
+    <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.js">  </script>  
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 
     <!-- AngularJS Application Scripts -->
     <script src="./app/app.js"></script>
@@ -72,7 +73,7 @@
                 <div class="form-group">
                     
                     <form name="frmManufacture" class="form-horizontal" novalidate="">
- 
+
                                  <div class="form-group error">
                                      <label for="inputEmail3" class="col-sm-3 control-label">Name</label>
                                      <div class="col-sm-9">
@@ -91,19 +92,26 @@
             </form>
         </div>
         <div id="model">
-            <form id="model-form">
-                <div>
-                    <div class="form-group">
+            <form id="model-form" name="frmModel">
+                <div>                  
+
+
+                <div class="form-group">
                         <label for="model-name">Model Name:</label>
-                        <input type="text" class="form-control input-sm" id="model-name">
+                        <input type="text" class="form-control input-sm" id="model-name" name="model-name" placeholder="Model Name" value="{{model-name}}" ng-model="model.name" ng-required="true">
+                        <span class="help-inline" 
+                                        ng-show="frmModel.model-name.$invalid && frmModel.model-name.$touched">Model Name field is required</span>
                     <div>
                     <div class="form-group">
                         <label for="select-manufacturer">Select Manufacturer:</label>
-                        <select class="form-control input-sm" id="select-manufacturer">
+                        <select class="form-control input-sm" id="select-manufacturer" name="model-manufacturer" ng-model="model.manufacturer">
                         </select>
+                        <span class="help-inline" 
+                                        ng-show="frmModel.model-manufacturer.$invalid && frmModel.model-manufacturer.$touched">Model Name field is required</span>
                     </div>
                 <div>
-                <div class="form-group">
+
+                <!-- <div class="form-group">
                     <label for="model-color">Color:</label>
                     <input type="text" class="form-control input-sm" id="model-color">
                 <div>
@@ -126,13 +134,35 @@
                 <div class="form-group">
                     <label for="image-1">Picture 1:</label>
                     <input type="file" name="image" id="image-1" required>
-                </div>
+                </div> -->
                 <div class="form-group">
-                    <label for="image-2">Picture 2:</label>
-                    <input type="file" name="image" id="image-2" required>
+                    <label for="image-2">Picture 1:</label>                    
+                    <!-- <input type = "file"  name="model-image" ng-model="model.image" ng-required="true" id="inp_file"  file-input="files" multiple="multiple" /> -->
+
+
+                    <!-- <button ng-click = "uploadFile()">upload me</button>  ng-click="saveModel(modalstate, id)"   -->
+<!--  -->
+                   
+  
+  <input type="file" name="file"  id="photo-upload" file-input="files" ng-model="model.image" onchange="angular.element(this).scope().uploadFile(this)"/>
+  <img ng-src="data:image/png;base64,{{model.Logo}}" id="photo-id" style="margin: 10px" />
+
+
+
+
+                    <span class="help-inline" 
+                                        ng-show="frmModel.model-image.$invalid && frmModel.model-image.$touched">Model Name field is required</span>
                 </div>
+
+
+
+
+
+
+
+                
                 <div class="form-group text-center">
-                    <button type="button" class="btn btn-default" onclick="addModel()">Save</button>
+                    <button type="button" class="btn btn-default" ng-click="saveModel()" ng-disabled="frmModel.$invalid">Save</button>
                 </div>
             </form>
         </div>

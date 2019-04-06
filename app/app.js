@@ -1,5 +1,31 @@
 var app = angular.module('car', [])
-        .constant('API_URL', 'http://127.0.0.1:8000/api/v1/');
+        .constant('API_URL', 'http://127.0.0.1:8000/api/v1/')        
+        .directive('fileInput', ['$parse', function($parse) {
+            return {
+                restrict: 'A',
+                link: function(scope, elm, attrs,https,http) {
+                        elm.bind('change', function() {
+                            $parse(attrs.fileInput)
+                            .assign(scope, elm[0].files)
+                            scope.$apply()
+                        });
+                }
+            }
+        }
+
+        ]);
+
+
+
+
+
+// (function() {
+// angular.module("SS.pages").directive("fileModel", fileModel);
+//  /** @ngInject */
+
+// })();
+
+        
 
 function loadManufacturer() {
     $.ajax({
@@ -16,3 +42,4 @@ function loadManufacturer() {
         }
     });
 }
+
