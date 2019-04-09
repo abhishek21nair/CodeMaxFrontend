@@ -1,5 +1,5 @@
 var app = angular.module('car', [])
-        .constant('API_URL', 'http://127.0.0.1:8000/api/v1/')        
+        .constant('API_URL', 'http://www.codemaxb.raigadkabaddi.in/api/v1/')        
         .directive('fileInput', ['$parse', function($parse) {
             return {
                 restrict: 'A',
@@ -19,7 +19,7 @@ var app = angular.module('car', [])
 
 function loadManufacturer() {
     $.ajax({
-        'url':'http://127.0.0.1:8000/api/v1/manufactures',
+        'url':'http://www.codemaxb.raigadkabaddi.in/api/v1/manufactures',
         method: "GET",
         success: function(data) {            
             var manufacturer = "<option>Select Manufacturer</option>";
@@ -42,7 +42,7 @@ function loadInventories() {
 
     $('#inventory-table').DataTable( {
         "ajax": {
-                    "url" : "http://127.0.0.1:8000/api/v1/showmodels",
+                    "url" : "http://www.codemaxb.raigadkabaddi.in/api/v1/showmodels",
                     dataSrc : ''
                 },
         rowId: 'id',
